@@ -18,6 +18,7 @@
             <div id="formulario">
 
                 <label for="nome">Nome:</label>
+                <!-- v-model faz a ligação entre input e data do Vue -->
                 <input v-model="nome" type="text" id="nome" placeholder="Digite seu nome" />
 
                 <label for="matricula">Matrícula:</label>
@@ -30,17 +31,31 @@
                     <div id="dados-cartao">
 
                         <span class="label-cartao">Nome:</span>
-                        <span class="dado-cartao">(O Nome deverá refletir aqui)</span>
+                        <!-- Reflete os dados do atributo nome -->
+                        <span class="dado-cartao"> {{ nome }} </span>
 
                         <span class="label-cartao">Matrícula:</span>
-                        <span class="dado-cartao" v-text="matricula">(A Matrícula deverá refletir aqui)</span>
+                        <!-- Reflete os dados do atributo matricula -->
+                        <span class="dado-cartao" v-text="matricula">{{ matricula }} </span>
                     </div>
                     <div id="foto">Foto</div>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- Importar VueJS da CDN para dentro da aplicacao -->
+    <script src="https://unpkg.com/vue@3.0.0-rc.5/dist/vue.global.js"></script>
+    <!-- Objeto/Instância do VueJS -->
+    <script>
+        Vue.createApp({
+            data() {  // Passa dados para o Vue
+                return {  // Retorna um objeto JSON
+                    nome: "",        // Atributo nome
+                    matricula: "",   // Atributo matrícula
+                }
+            }
+        }).mount("#central") //Div que engloba os elementos que o VueJS vai trabalhar (# + id do elemento)
+    </script>
 </body>
 
 </html>
